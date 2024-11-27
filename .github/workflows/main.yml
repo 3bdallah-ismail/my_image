@@ -1,7 +1,11 @@
 on: 
     push:
         branches:
-            -master
+            - master
+
+
+
+
 
 
 jobs:
@@ -11,6 +15,7 @@ jobs:
         steps:
             - name: "testing github actions"
               run: pwd 
+
             - name: "testing printing"
               run: echo abdallah
 
