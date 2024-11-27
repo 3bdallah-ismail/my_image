@@ -11,9 +11,13 @@ jobs:
       runs-on: ubuntu-latest
   
       steps:
-        - name: "Testing GitHub Actions"
-          run: pwd
-  
-        - name: "Testing Printing"
-          run: echo "abdallah"
+        - uses: actions/checkout@v3
+
+        - name: " login to dockerhub"
+          run: docker login --username ${{ secrets.DOCKER_USER_NAME}} --password ${{ secrets.DOCKER_TOKEN }}
+        - name: " building docker "
+          run: docker build -t  ${{ secrets.DOCKER_USER_NAME}}/docker-image-creation  .
+        - name: " pushing to docker hub "
+          run: docker push  ${{ secrets.DOCKER_USER_NAME}}/docker-image-creation
+
   
